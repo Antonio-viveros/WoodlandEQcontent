@@ -2,51 +2,238 @@
 <html>
 <head>
   <title>WoodlandEQcontent</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      background: #0f172a;
+      color: white;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .card {
+      background: #1e293b;
+      padding: 15px;
+      border-radius: 12px;
+      margin-bottom: 15px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: none;
+      margin-bottom: 10px;
+    }
+
+    button {
+      padding: 12px;
+      width: 100%;
+      border: none;
+      border-radius: 8px;
+      background: #22c55e;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .day {
+      background: #334155;
+      padding: 10px;
+      border-radius: 10px;
+      min-height: 80px;
+    }
+
+    h1 {
+      margin-top: 0;
+    }
+
+    .small {
+      font-size: 12px;
+      opacity: 0.8;
+    }
+  </style>
 </head>
 
-<body style="font-family: Arial; padding: 30px;">
-  <h1>WoodlandEQcontent</h1>
-  <p>Woodland Equipment Content System</p>
+<body>
 
-  <hr>
+<div class="container">
 
-  <h2>🎬 Reel Generator</h2>
+  <h1>🚜 WoodlandEQcontent</h1>
+  <p class="small">AI Content System for Woodland Equipment</p>
 
-  <p>Enter product idea:</p>
-  <input id="product" placeholder="e.g. Excavator, Loader" style="padding:8px; width:250px;">
+  <!-- INPUT -->
+  <div class="card">
+    <h2>🎯 Product Input</h2>
+    <input id="product" placeholder="Enter equipment (Excavator, Loader, etc.)">
+    <button onclick="generateAll()">Generate Content Package</button>
+  </div>
 
-  <button onclick="generate()">Generate Idea</button>
+  <!-- OUTPUT -->
+  <div class="card">
+    <h2>🎬 Reel Idea</h2>
+    <p id="idea">---</p>
 
-  <h3>Result:</h3>
-  <p id="output">Nothing yet...</p>
+    <h2>📝 Caption</h2>
+    <p id="caption">---</p>
 
-  <hr>
+    <h2>🏷 Hashtags</h2>
+    <p id="hashtags">---</p>
 
-  <h2>📅 Weekly Plan</h2>
-  <ul>
-    <li>Monday - Product Showcase</li>
-    <li>Tuesday - Equipment Demo</li>
-    <li>Wednesday - Promo Reel</li>
-    <li>Thursday - Customer Highlight</li>
-    <li>Friday - Sales Push</li>
-  </ul>
+    <h2>📜 Script</h2>
+    <p id="script">---</p>
+  </div>
 
-  <script>
-    function generate() {
-      const product = document.getElementById("product").value;
+  <!-- CALENDAR -->
+  <div class="card">
+    <h2>📅 Weekly Calendar</h2>
 
-      const ideas = [
-        `Show ${product} in action on a job site`,
-        `3 reasons contractors choose ${product}`,
-        `${product} speed test demo`,
-        `Before vs after using ${product}`,
-        `Why ${product} saves time and money`
-      ];
+    <div class="grid">
 
-      const pick = ideas[Math.floor(Math.random() * ideas.length)];
+      <div class="day">
+        <b>Monday</b><br>
+        Product Showcase
+      </div>
 
-      document.getElementById("output").innerText = pick;
-    }
-  </script>
+      <div class="day">
+        <b>Tuesday</b><br>
+        Field Demo
+      </div>
+
+      <div class="day">
+        <b>Wednesday</b><br>
+        Feature Highlight
+      </div>
+
+      <div class="day">
+        <b>Thursday</b><br>
+        Customer Value
+      </div>
+
+      <div class="day">
+        <b>Friday</b><br>
+        Promo / Sales Push
+      </div>
+
+      <div class="day">
+        <b>Weekend</b><br>
+        Planning / Drafts
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+function generateAll() {
+  const product = document.getElementById("product").value || "Equipment";
+
+  const ideas = [
+    `${product} powering through tough job site conditions`,
+    `Why contractors choose ${product}`,
+    `${product} real-world performance test`,
+    `Before vs after using ${product}`,
+    `${product} efficiency breakdown`
+  ];
+
+  const captions = [
+    `Built for power. Built for reliability. Meet ${product}.`,
+    `When the job gets tough, ${product} performs.`,
+    `Engineered for real construction demands — ${product}.`,
+    `More power. More productivity. ${product}.`,
+    `Upgrade your job site with ${product}.`
+  ];
+
+  const hashtags = [
+    "#construction #equipment #woodland #heavymachinery #jobsite",
+    "#builders #contractors #constructionlife #equipment #woodlandeq",
+    "#machinery #worksite #productivity #heavyequipment #buildstrong"
+  ];
+
+  const scripts = [
+    `HOOK: Stop wasting time on inefficient equipment.\nSHOW: ${product} in action.\nVALUE: Faster work, less downtime.\nCTA: Upgrade today.`,
+    `HOOK: Built for serious contractors.\nSHOW: ${product} on site.\nVALUE: Power + reliability combined.\nCTA: Choose better equipment.`,
+    `HOOK: This is job site efficiency.\nSHOW: ${product} working.\nVALUE: Maximum output, minimal effort.\nCTA: Invest smarter.`
+  ];
+
+  document.getElementById("idea").innerText =
+    ideas[Math.floor(Math.random() * ideas.length)];
+
+  document.getElementById("caption").innerText =
+    captions[Math.floor(Math.random() * captions.length)];
+
+  document.getElementById("hashtags").innerText =
+    hashtags[Math.floor(Math.random() * hashtags.length)];
+
+  document.getElementById("script").innerText =
+    scripts[Math.floor(Math.random() * scripts.length)];
+}
+<script>
+async function generateAll() {
+  const product = document.getElementById("product").value || "Equipment";
+
+  document.getElementById("idea").innerText = "Generating AI content...";
+  document.getElementById("caption").innerText = "Generating AI content...";
+  document.getElementById("hashtags").innerText = "Generating AI content...";
+  document.getElementById("script").innerText = "Generating AI content...";
+
+  const prompt = `
+You are a marketing expert for Woodland commercial equipment.
+
+Product: ${product}
+
+Return JSON ONLY in this format:
+{
+  "idea": "",
+  "caption": "",
+  "hashtags": "",
+  "script": ""
+}
+`;
+
+  try {
+    const res = await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer YOUR_API_KEY_HERE"
+      },
+      body: JSON.stringify({
+        model: "gpt-4o-mini",
+        messages: [{ role: "user", content: prompt }],
+        temperature: 0.8
+      })
+    });
+
+    const data = await res.json();
+    const text = data.choices[0].message.content;
+
+    const parsed = JSON.parse(text);
+
+    document.getElementById("idea").innerText = parsed.idea;
+    document.getElementById("caption").innerText = parsed.caption;
+    document.getElementById("hashtags").innerText = parsed.hashtags;
+    document.getElementById("script").innerText = parsed.script;
+
+  } catch (err) {
+    document.getElementById("idea").innerText =
+      "Error connecting to AI. Check API key.";
+  }
+}
+</script>
+
 </body>
 </html>
