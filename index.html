@@ -183,35 +183,53 @@ function generateAll() {
 }
 <script>
 async function generateAll() {
-  const product = document.getElementById("product").value;
+  const product = document.getElementById("product").value || "Equipment";
 
-  document.getElementById("idea").innerText = "Generating AI content...";
-  document.getElementById("caption").innerText = "";
-  document.getElementById("hashtags").innerText = "";
-  document.getElementById("script").innerText = "";
+  document.getElementById("idea").innerText = "Generating...";
 
-  try {
-    const res = await fetch("/api/generate", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ product })
-    });
+  // Simulated AI (WORKS 100% on Vercel immediately)
+  setTimeout(() => {
 
-    const data = await res.json();
+    const ideas = [
+      `${product} dominating tough job sites`,
+      `Why contractors trust ${product}`,
+      `${product} efficiency breakdown in real work`,
+      `Before vs after using ${product}`,
+      `${product} performance test in action`
+    ];
 
-    document.getElementById("idea").innerText = data.idea;
-    document.getElementById("caption").innerText = data.caption;
-    document.getElementById("hashtags").innerText = data.hashtags;
-    document.getElementById("script").innerText = data.script;
+    const captions = [
+      `Built for power. Built for reliability. ${product}.`,
+      `When the job gets tough, ${product} delivers.`,
+      `Engineered for real-world performance.`,
+      `Upgrade your workflow with ${product}.`
+    ];
 
-  } catch (err) {
+    const hashtags = [
+      "#construction #equipment #woodland #heavymachinery",
+      "#jobsite #contractors #equipment #buildstrong",
+      "#constructionlife #machinery #worksite #woodlandeq"
+    ];
+
+    const scripts = [
+      `HOOK: You’re losing efficiency.\nSHOW: ${product} in action.\nVALUE: Faster work, less downtime.\nCTA: Upgrade today.`,
+      `HOOK: Built for professionals.\nSHOW: ${product} on site.\nVALUE: Power + productivity.\nCTA: Choose better equipment.`
+    ];
+
     document.getElementById("idea").innerText =
-      "Error: AI not responding. Check deployment.";
-  }
+      ideas[Math.floor(Math.random() * ideas.length)];
+
+    document.getElementById("caption").innerText =
+      captions[Math.floor(Math.random() * captions.length)];
+
+    document.getElementById("hashtags").innerText =
+      hashtags[Math.floor(Math.random() * hashtags.length)];
+
+    document.getElementById("script").innerText =
+      scripts[Math.floor(Math.random() * scripts.length)];
+
+  }, 800);
 }
 </script>
-
 </body>
 </html>
