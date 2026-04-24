@@ -3,16 +3,50 @@
 <head>
   <title>WoodlandEQcontent</title>
 </head>
+
 <body style="font-family: Arial; padding: 30px;">
   <h1>WoodlandEQcontent</h1>
+  <p>Woodland Equipment Content System</p>
 
-  <p>Simple iPad dashboard (stable version)</p>
+  <hr>
 
-  <h3>Modules</h3>
+  <h2>🎬 Reel Generator</h2>
+
+  <p>Enter product idea:</p>
+  <input id="product" placeholder="e.g. Excavator, Loader" style="padding:8px; width:250px;">
+
+  <button onclick="generate()">Generate Idea</button>
+
+  <h3>Result:</h3>
+  <p id="output">Nothing yet...</p>
+
+  <hr>
+
+  <h2>📅 Weekly Plan</h2>
   <ul>
-    <li>Create Reel Ideas</li>
-    <li>Schedule Posts (manual)</li>
-    <li>Content Library</li>
+    <li>Monday - Product Showcase</li>
+    <li>Tuesday - Equipment Demo</li>
+    <li>Wednesday - Promo Reel</li>
+    <li>Thursday - Customer Highlight</li>
+    <li>Friday - Sales Push</li>
   </ul>
+
+  <script>
+    function generate() {
+      const product = document.getElementById("product").value;
+
+      const ideas = [
+        `Show ${product} in action on a job site`,
+        `3 reasons contractors choose ${product}`,
+        `${product} speed test demo`,
+        `Before vs after using ${product}`,
+        `Why ${product} saves time and money`
+      ];
+
+      const pick = ideas[Math.floor(Math.random() * ideas.length)];
+
+      document.getElementById("output").innerText = pick;
+    }
+  </script>
 </body>
 </html>
