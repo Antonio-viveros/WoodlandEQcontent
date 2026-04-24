@@ -3,12 +3,10 @@ export default function Home() {
     <main style={{
       padding: 40,
       fontFamily: "Arial",
-      background: "#0f172a",
-      color: "white",
       minHeight: "100vh"
     }}>
-      <h1>🚜 WoodlandEQcontent</h1>
-      <p>System reset successful — Next.js is clean and ready.</p>
+      <h1>WoodlandEQcontent</h1>
+      <p>App is loading correctly</p>
     </main>
   );
 }
