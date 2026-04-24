@@ -183,54 +183,32 @@ function generateAll() {
 }
 <script>
 async function generateAll() {
-  const product = document.getElementById("product").value || "Equipment";
+  const product = document.getElementById("product").value;
 
   document.getElementById("idea").innerText = "Generating AI content...";
-  document.getElementById("caption").innerText = "Generating AI content...";
-  document.getElementById("hashtags").innerText = "Generating AI content...";
-  document.getElementById("script").innerText = "Generating AI content...";
-
-  const prompt = `
-You are a marketing expert for Woodland commercial equipment.
-
-Product: ${product}
-
-Return JSON ONLY in this format:
-{
-  "idea": "",
-  "caption": "",
-  "hashtags": "",
-  "script": ""
-}
-`;
+  document.getElementById("caption").innerText = "";
+  document.getElementById("hashtags").innerText = "";
+  document.getElementById("script").innerText = "";
 
   try {
-    const res = await fetch("https://api.openai.com/v1/chat/completions", {
+    const res = await fetch("/api/generate", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer YOUR_API_KEY_HERE"
+        "Content-Type": "application/json"
       },
-      body: JSON.stringify({
-        model: "gpt-4o-mini",
-        messages: [{ role: "user", content: prompt }],
-        temperature: 0.8
-      })
+      body: JSON.stringify({ product })
     });
 
     const data = await res.json();
-    const text = data.choices[0].message.content;
 
-    const parsed = JSON.parse(text);
-
-    document.getElementById("idea").innerText = parsed.idea;
-    document.getElementById("caption").innerText = parsed.caption;
-    document.getElementById("hashtags").innerText = parsed.hashtags;
-    document.getElementById("script").innerText = parsed.script;
+    document.getElementById("idea").innerText = data.idea;
+    document.getElementById("caption").innerText = data.caption;
+    document.getElementById("hashtags").innerText = data.hashtags;
+    document.getElementById("script").innerText = data.script;
 
   } catch (err) {
     document.getElementById("idea").innerText =
-      "Error connecting to AI. Check API key.";
+      "Error: AI not responding. Check deployment.";
   }
 }
 </script>
