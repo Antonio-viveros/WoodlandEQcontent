@@ -1,8 +1,3 @@
-export const metadata = {
-  title: "WoodlandEQcontent",
-  description: "Woodland Equipment AI Content System"
-};
-
 export default function RootLayout({
   children,
 }: {
