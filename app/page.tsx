@@ -1,12 +1,8 @@
 export default function Home() {
   return (
-    <main style={{
-      padding: 40,
-      fontFamily: "Arial",
-      minHeight: "100vh"
-    }}>
+    <main style={{ padding: 40 }}>
       <h1>WoodlandEQcontent</h1>
-      <p>App is loading correctly</p>
+      <p>Build test running successfully</p>
     </main>
   );
 }
