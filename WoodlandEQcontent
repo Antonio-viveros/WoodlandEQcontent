@@ -1,7 +1,4 @@
 WoodlandEQcontent/
-├── app/
-├── components/
-├── lib/
-├── pages/
-├── prisma/
-├── package.json
+  app/
+    page.tsx
+  package.json
